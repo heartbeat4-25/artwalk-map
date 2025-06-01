@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>艺行湖州 · 高德地图贴图</title>
+  <title>艺行湖州ArtWalk</title>
   <style>
     html, body, #container {
       margin: 0;
@@ -86,9 +86,26 @@
           offset: new AMap.Pixel(0, -30)
         }
       });
-      marker.setMap(null); // 初始不显示
+    
+      // ✨ 点击显示信息窗
+      marker.on("click", () => {
+        const infoWindow = new AMap.InfoWindow({
+          content: `
+            <div style="width:260px;max-height:400px;overflow:auto;">
+              <h3>${item.name}</h3>
+              <p style="font-size: 14px; line-height: 1.6;">${item.desc}</p>
+              <img src="${item.image}" style="width: 100%; border-radius: 4px; margin-top: 6px;" />
+            </div>
+          `,
+          offset: new AMap.Pixel(0, -20)
+        });
+        infoWindow.open(map, [item.lng, item.lat]);
+      });
+    
+      marker.setMap(null); // 初始隐藏
       districtMarkers.push(marker);
     });
+
 
     let districtVisible = false;
     
