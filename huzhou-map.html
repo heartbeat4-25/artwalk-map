@@ -35,10 +35,18 @@
     });
 
 
+    const centerLng = 120.0936;
+    const centerLat = 30.8701;
+    
+    // 计算 0.6° 经度、约 0.287° 纬度（保持 2.09:1 比例）
+    const deltaLng = 0.3;   // 经度一半
+    const deltaLat = 0.1435; // 纬度一半
+    
     const bounds = new AMap.Bounds(
-      [119.83, 30.68],  // 西南
-      [120.43, 31.08]   // 东北
+      [centerLng - deltaLng, centerLat - deltaLat],
+      [centerLng + deltaLng, centerLat + deltaLat]
     );
+
 
     const imageLayer = new AMap.ImageLayer({
       url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",
