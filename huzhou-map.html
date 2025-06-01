@@ -55,7 +55,7 @@
     });
 
     // 图像边界
-    const bounds = new AMap.Bounds([119.26, 30.35], [120.50, 31.16]);
+    const bounds = new AMap.Bounds([119.26, 30.40], [120.50, 31.16]);
     const imageLayer = new AMap.ImageLayer({
       url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",
       bounds: bounds,
@@ -93,9 +93,18 @@
       districtMarkers.push(marker);
     });
 
+    let districtVisible = false;
+    
     function showDistricts() {
-      districtMarkers.forEach(m => m.setMap(map));
+      if (!districtVisible) {
+        districtMarkers.forEach(m => m.setMap(map));
+        districtVisible = true;
+      } else {
+        districtMarkers.forEach(m => m.setMap(null));
+        districtVisible = false;
+      }
     }
+
   </script>
 </body>
 </html>
