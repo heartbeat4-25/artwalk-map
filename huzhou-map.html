@@ -12,7 +12,6 @@
   <div id="container"></div>
 
   <script>
-    // 延迟到 window.onload 保证页面和地图 SDK 都加载完成
     window.onload = function () {
       const map = new TMap.Map("container", {
         center: new TMap.LatLng(30.8701, 120.0936),
@@ -22,21 +21,18 @@
 
       console.log("地图初始化完成");
 
-      map.on("complete", () => {
-        console.log("地图 complete 事件触发");
-
-        const overlay = new TMap.GroundOverlay({
-          map: map,
-          url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png?ts=12345",
-          bounds: new TMap.LatLngBounds(
-            new TMap.LatLng(30.64, 119.79),
-            new TMap.LatLng(31.02, 120.39)
-          ),
-          opacity: 1
-        });
-
-        console.log("Overlay 添加成功：", overlay);
+      // ✅ 直接添加 overlay，不用等 complete 事件
+      const overlay = new TMap.GroundOverlay({
+        map: map,
+        url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png?ts=12345",
+        bounds: new TMap.LatLngBounds(
+          new TMap.LatLng(30.64, 119.79),
+          new TMap.LatLng(31.02, 120.39)
+        ),
+        opacity: 1
       });
+
+      console.log("Overlay 添加成功：", overlay);
     };
   </script>
 </body>
