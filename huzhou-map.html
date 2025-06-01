@@ -66,7 +66,7 @@
 </head>
 <body>
   <div id="container"></div>
-  <div class="search-box">
+  <div class="search-box" id="searchBar">
     <input id="searchInput" placeholder="搜索区县/街道名" />
     <button onclick="handleSearch()">搜索</button>
   </div>
@@ -161,10 +161,12 @@
       document.getElementById("overlayImage").src = data.image;
       document.getElementById("overlayDesc").innerText = data.desc;
       document.getElementById("infoOverlay").style.display = "flex";
+      document.getElementById("searchBar").style.display = "none";
     }
 
     function hideOverlay() {
       document.getElementById("infoOverlay").style.display = "none";
+      document.getElementById("searchBar").style.display = "flex";
     }
 
     function handleSearch() {
