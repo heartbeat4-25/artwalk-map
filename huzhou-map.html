@@ -39,9 +39,10 @@
   <div id="container"></div>
   <div class="sidebar">
     <div class="btn" onclick="showDistricts()">区县</div>
+    <div class="btn" onclick="showStreets()">街道</div>
   </div>
 
-  <!-- ✅ 全屏信息卡片 -->
+  <!-- 全屏信息卡片 -->
   <div id="infoOverlay" style="
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -63,7 +64,6 @@
       border: none;
       cursor: pointer;
     ">×</button>
-
     <h2 id="overlayTitle"></h2>
     <img id="overlayImage" src="" style="max-width: 90%; margin: 16px 0; border-radius: 10px;" />
     <p id="overlayDesc" style="font-size: 16px; line-height: 1.6; text-align: justify;"></p>
@@ -75,7 +75,6 @@
       center: [120.0936, 30.8701]
     });
 
-    // 背景图层
     const bounds = new AMap.Bounds([119.26, 30.38], [120.52, 31.16]);
     const imageLayer = new AMap.ImageLayer({
       url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",
@@ -84,50 +83,50 @@
     });
     map.add(imageLayer);
 
-    // 示例 markers（从 locations.js 读取）
-    const districtMarkers = [];
-    const iconUrl = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png";
+    const districtMarkers = [], streetMarkers = [];
+    const redIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png";
+    const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/yellowSin.png";
 
     districtData.forEach(item => {
       const marker = new AMap.Marker({
         position: [item.lng, item.lat],
         title: item.name,
-        icon: new AMap.Icon({
-          image: iconUrl,
-          size: new AMap.Size(32, 32),
-          imageSize: new AMap.Size(32, 32)
-        }),
-        label: {
-          content: item.name,
-          offset: new AMap.Pixel(0, -30)
-        }
+        icon: new AMap.Icon({ image: redIcon, size: new AMap.Size(32, 32), imageSize: new AMap.Size(32, 32) }),
+        label: { content: item.name, offset: new AMap.Pixel(0, -30) }
       });
-
-      marker.on("click", () => {
-        // ✅ 显示全屏弹窗
-        document.getElementById("overlayTitle").innerText = item.name;
-        document.getElementById("overlayImage").src = item.image;
-        document.getElementById("overlayDesc").innerText = item.desc;
-        document.getElementById("infoOverlay").style.display = "flex";
-      });
-
-      marker.setMap(null); // 初始隐藏
+      marker.on("click", () => showOverlay(item));
+      marker.setMap(null);
       districtMarkers.push(marker);
     });
 
-    // 显示 / 隐藏 marker 切换
-    let districtVisible = false;
+    streetData.forEach(item => {
+      const marker = new AMap.Marker({
+        position: [item.lng, item.lat],
+        title: item.name,
+        icon: new AMap.Icon({ image: yellowIcon, size: new AMap.Size(32, 32), imageSize: new AMap.Size(32, 32) }),
+        label: { content: item.name, offset: new AMap.Pixel(0, -30) }
+      });
+      marker.on("click", () => showOverlay(item));
+      marker.setMap(null);
+      streetMarkers.push(marker);
+    });
+
+    let districtVisible = false, streetVisible = false;
     function showDistricts() {
-      if (!districtVisible) {
-        districtMarkers.forEach(m => m.setMap(map));
-        districtVisible = true;
-      } else {
-        districtMarkers.forEach(m => m.setMap(null));
-        districtVisible = false;
-      }
+      districtVisible = !districtVisible;
+      districtMarkers.forEach(m => m.setMap(districtVisible ? map : null));
+    }
+    function showStreets() {
+      streetVisible = !streetVisible;
+      streetMarkers.forEach(m => m.setMap(streetVisible ? map : null));
     }
 
-    // 关闭全屏弹窗
+    function showOverlay(data) {
+      document.getElementById("overlayTitle").innerText = data.name;
+      document.getElementById("overlayImage").src = data.image;
+      document.getElementById("overlayDesc").innerText = data.desc;
+      document.getElementById("infoOverlay").style.display = "flex";
+    }
     function hideOverlay() {
       document.getElementById("infoOverlay").style.display = "none";
     }
