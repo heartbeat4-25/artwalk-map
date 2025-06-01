@@ -17,16 +17,22 @@
       zoomControl: true
     });
 
-    const overlay = new TMap.GroundOverlay({
-      map: map,
-      url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png?ts=" + Date.now(),
-      bounds: new TMap.LatLngBounds(
-        new TMap.LatLng(30.64, 119.79),  // 左下角（西南）
-        new TMap.LatLng(31.02, 120.39)   // 右上角（东北）
-      ),
-      opacity: 1
+    // ✅ 监听地图加载完成事件
+    map.on("complete", () => {
+      console.log("地图加载完成");
+
+      const overlay = new TMap.GroundOverlay({
+        map: map,
+        url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png?ts=" + Date.now(),  // 防缓存
+        bounds: new TMap.LatLngBounds(
+          new TMap.LatLng(30.64, 119.79),
+          new TMap.LatLng(31.02, 120.39)
+        ),
+        opacity: 1
+      });
+
+      console.log("Overlay 添加成功：", overlay);
     });
-    console.log("Overlay 添加成功：", overlay);
   </script>
 </body>
 </html>
