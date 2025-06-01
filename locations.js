@@ -35,3 +35,28 @@
         image: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/anjicounty.jpg"
       }
     ];
+
+
+const streetData = [
+  {
+    name: "织里镇",
+    lng: 120.1523,
+    lat: 30.8419,
+    desc: "织里镇是著名的童装产业基地，位于吴兴区。",
+    image: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/zhili.jpg"
+  },
+  {
+    name: "南浔镇",
+    lng: 120.4290,
+    lat: 30.8730,
+    desc: "南浔镇以古镇文化著称，是旅游核心区域。",
+    image: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/nanxunzhen.jpg"
+  },
+  {
+    name: "德清武康街道",
+    lng: 119.9775,
+    lat: 30.5370,
+    desc: "武康是德清的行政中心，交通便利。",
+    image: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/wukang.jpg"
+  }
+];
