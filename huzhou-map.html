@@ -31,8 +31,6 @@
       font-weight: bold;
       user-select: none;
     }
-
-
   </style>
   <script src="https://webapi.amap.com/maps?v=2.0&key=0b76f92f9acf976b06e26cc05514203e"></script>
   <script src="locations.js"></script>
@@ -42,25 +40,42 @@
   <div class="sidebar">
     <div class="btn" onclick="showDistricts()">区县</div>
   </div>
+
+  <!-- ✅ 全屏信息卡片 -->
+  <div id="infoOverlay" style="
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: white;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    overflow-y: auto;
+    font-family: sans-serif;
+  ">
+    <button onclick="hideOverlay()" style="
+      position: absolute;
+      top: 20px; right: 20px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    ">×</button>
+
+    <h2 id="overlayTitle"></h2>
+    <img id="overlayImage" src="" style="max-width: 90%; margin: 16px 0; border-radius: 10px;" />
+    <p id="overlayDesc" style="font-size: 16px; line-height: 1.6; text-align: justify;"></p>
+  </div>
+
   <script>
     const map = new AMap.Map("container", {
       zoom: 9,
-      center: [120.0936, 30.8701], // 湖州
+      center: [120.0936, 30.8701]
     });
 
-    // 湖州市中心 marker
-    new AMap.Marker({
-      map: map,
-      position: [120.0936, 30.8701],
-      title: "湖州市中心",
-      label: {
-        content: "湖州中心点",
-        direction: 'top',
-        offset: new AMap.Pixel(0, -10)
-      }
-    });
-
-    // 图像边界
+    // 背景图层
     const bounds = new AMap.Bounds([119.26, 30.38], [120.52, 31.16]);
     const imageLayer = new AMap.ImageLayer({
       url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",
@@ -69,6 +84,7 @@
     });
     map.add(imageLayer);
 
+    // 示例 markers（从 locations.js 读取）
     const districtMarkers = [];
     const iconUrl = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png";
 
@@ -86,29 +102,21 @@
           offset: new AMap.Pixel(0, -30)
         }
       });
-    
-      // ✨ 点击显示信息窗
+
       marker.on("click", () => {
-        const infoWindow = new AMap.InfoWindow({
-          content: `
-            <div style="width:260px;max-height:400px;overflow:auto;">
-              <h3>${item.name}</h3>
-              <p style="font-size: 14px; line-height: 1.6;">${item.desc}</p>
-              <img src="${item.image}" style="width: 100%; border-radius: 4px; margin-top: 6px;" />
-            </div>
-          `,
-          offset: new AMap.Pixel(0, -20)
-        });
-        infoWindow.open(map, [item.lng, item.lat]);
+        // ✅ 显示全屏弹窗
+        document.getElementById("overlayTitle").innerText = item.name;
+        document.getElementById("overlayImage").src = item.image;
+        document.getElementById("overlayDesc").innerText = item.desc;
+        document.getElementById("infoOverlay").style.display = "flex";
       });
-    
+
       marker.setMap(null); // 初始隐藏
       districtMarkers.push(marker);
     });
 
-
+    // 显示 / 隐藏 marker 切换
     let districtVisible = false;
-    
     function showDistricts() {
       if (!districtVisible) {
         districtMarkers.forEach(m => m.setMap(map));
@@ -119,6 +127,10 @@
       }
     }
 
+    // 关闭全屏弹窗
+    function hideOverlay() {
+      document.getElementById("infoOverlay").style.display = "none";
+    }
   </script>
 </body>
 </html>
