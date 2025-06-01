@@ -70,6 +70,8 @@
   </div>
 
   <script>
+    let districtVisible = false, streetVisible = false;
+
     const map = new AMap.Map("container", {
       zoom: 9,
       center: [120.0936, 30.8701]
@@ -85,7 +87,7 @@
 
     const districtMarkers = [], streetMarkers = [];
     const redIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png";
-    const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/yellowSin.png";
+    const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/yellowSign.png";
 
     districtData.forEach(item => {
       const marker = new AMap.Marker({
@@ -111,11 +113,11 @@
       streetMarkers.push(marker);
     });
 
-    let districtVisible = false, streetVisible = false;
     function showDistricts() {
       districtVisible = !districtVisible;
       districtMarkers.forEach(m => m.setMap(districtVisible ? map : null));
     }
+
     function showStreets() {
       streetVisible = !streetVisible;
       streetMarkers.forEach(m => m.setMap(streetVisible ? map : null));
@@ -127,6 +129,7 @@
       document.getElementById("overlayDesc").innerText = data.desc;
       document.getElementById("infoOverlay").style.display = "flex";
     }
+
     function hideOverlay() {
       document.getElementById("infoOverlay").style.display = "none";
     }
