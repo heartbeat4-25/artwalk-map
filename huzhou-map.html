@@ -19,13 +19,14 @@
 
     const overlay = new TMap.GroundOverlay({
       map: map,
-      url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",  // 👈 替换为你这张插画图的外链地址
+      url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png?ts=" + Date.now(),
       bounds: new TMap.LatLngBounds(
         new TMap.LatLng(30.64, 119.79),  // 左下角（西南）
         new TMap.LatLng(31.02, 120.39)   // 右上角（东北）
       ),
       opacity: 1
     });
+    console.log("Overlay 添加成功：", overlay);
   </script>
 </body>
 </html>
