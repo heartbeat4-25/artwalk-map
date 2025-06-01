@@ -55,10 +55,7 @@
     });
 
     // 图像边界
-    const bounds = new AMap.Bounds([
-      119.26, 30.49], [120.47, 31.16]
-    );
-
+    const bounds = new AMap.Bounds([119.26, 30.49], [120.47, 31.16]);
     const imageLayer = new AMap.ImageLayer({
       url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",
       bounds: bounds,
@@ -76,7 +73,7 @@
     ];
 
     const districtMarkers = [];
-    const iconUrl = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png"; // 替换为你图床地址
+    const iconUrl = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png";
 
     districtData.forEach(item => {
       const marker = new AMap.Marker({
@@ -90,15 +87,14 @@
         label: {
           content: item.name,
           offset: new AMap.Pixel(0, -30)
-        },
-        visible: false
+        }
       });
-      marker.setMap(map);
+      marker.setMap(null); // 初始不显示
       districtMarkers.push(marker);
     });
 
     function showDistricts() {
-      districtMarkers.forEach(m => m.setVisible(true));
+      districtMarkers.forEach(m => m.setMap(map));
     }
   </script>
 </body>
