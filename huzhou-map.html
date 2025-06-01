@@ -31,12 +31,45 @@
       font-weight: bold;
       user-select: none;
     }
+    .search-box {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1001;
+      display: flex;
+      background: white;
+      padding: 6px 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      font-size: 16px;
+      padding: 6px;
+      width: 200px;
+    }
+    .search-box button {
+      border: none;
+      background: #22a05a;
+      color: white;
+      font-weight: bold;
+      padding: 6px 10px;
+      margin-left: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
   </style>
   <script src="https://webapi.amap.com/maps?v=2.0&key=0b76f92f9acf976b06e26cc05514203e"></script>
   <script src="locations.js"></script>
 </head>
 <body>
   <div id="container"></div>
+  <div class="search-box">
+    <input id="searchInput" placeholder="搜索区县/街道名" />
+    <button onclick="handleSearch()">搜索</button>
+  </div>
   <div class="sidebar">
     <div class="btn" onclick="showDistricts()">区县</div>
     <div class="btn" onclick="showStreets()">街道</div>
@@ -132,6 +165,22 @@
 
     function hideOverlay() {
       document.getElementById("infoOverlay").style.display = "none";
+    }
+
+    function handleSearch() {
+      const keyword = document.getElementById("searchInput").value.trim();
+      if (!keyword) return;
+
+      const allData = [...districtData, ...streetData];
+      const match = allData.find(item => item.name.includes(keyword));
+
+      if (match) {
+        map.setZoom(12);
+        map.panTo([match.lng, match.lat]);
+        showOverlay(match);
+      } else {
+        alert("未找到相关地点");
+      }
     }
   </script>
 </body>
