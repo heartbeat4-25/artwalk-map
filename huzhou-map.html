@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>艺行湖州地图</title>
+  <script src="https://map.qq.com/api/gljs?v=1.exp&key=T2OBZ-LBZWB-EZBUX-N4QGG-XX5GJ-QXFLP"></script>
+  <style>
+    html, body, #container { margin: 0; padding: 0; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <div id="container"></div>
+  <script>
+    const map = new TMap.Map("container", {
+      center: new TMap.LatLng(30.8701, 120.0936),
+      zoom: 11
+    });
+
+    const overlay = new TMap.GroundOverlay({
+      map: map,
+      url: "https://github.com/heartbeat4-25/artwalk-map/blob/main/artwalk-map.png",  // 👈 替换为你这张插画图的外链地址
+      bounds: new TMap.LatLngBounds(
+        new TMap.LatLng(30.64, 119.79),  // 左下角（西南）
+        new TMap.LatLng(31.02, 120.39)   // 右上角（东北）
+      ),
+      opacity: 1
+    });
+  </script>
+</body>
+</html>
