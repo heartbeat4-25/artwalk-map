@@ -22,6 +22,19 @@
       center: [120.0936, 30.8701], // 湖州
     });
 
+    // 在湖州中心加一个测试 marker
+    new AMap.Marker({
+      map: map,
+      position: [120.0936, 30.8701],  // 湖州市中心经纬度
+      title: "湖州市中心",
+      label: {
+        content: "湖州中心点",
+        direction: 'top',
+        offset: new AMap.Pixel(0, -10)
+      }
+    });
+
+
     const bounds = new AMap.Bounds(
       [119.75, 30.7],  // 西南
       [120.35, 30.97]  // 东北
