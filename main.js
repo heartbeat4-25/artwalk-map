@@ -2,7 +2,8 @@ let districtVisible = false, streetVisible = false;
 
 const map = new AMap.Map("container", {
   zoom: 9,
-  center: [120.0936, 30.8701]
+  //center: [120.0936, 30.8701]
+  center: [118.1864, 25.0652]  // 安溪县政府大约位置
 });
 
 const bounds = new AMap.Bounds([119.26, 30.38], [120.52, 31.16]);
