@@ -7,7 +7,7 @@ const map = new AMap.Map("container", {
 
 const bounds = new AMap.Bounds([119.26, 30.38], [120.52, 31.16]);
 const imageLayer = new AMap.ImageLayer({
-  url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/iamges/maps/artwalk-map.png",
+  url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/maps/artwalk-map.png",
   bounds: bounds,
   opacity: 1
 });
