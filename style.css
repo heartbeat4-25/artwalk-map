@@ -1,0 +1,86 @@
+html, body, #container {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+.sidebar {
+  position: absolute;
+  top: 100px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+.btn {
+  background: white;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.25);
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  user-select: none;
+}
+.search-box {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  display: flex;
+  background: white;
+  padding: 6px 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+.search-box input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 6px;
+  width: 200px;
+}
+.search-box button {
+  border: none;
+  background: #22a05a;
+  color: white;
+  font-weight: bold;
+  padding: 6px 10px;
+  margin-left: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#infoOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: white;
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  overflow-y: auto;
+  font-family: sans-serif;
+}
+#infoOverlay button {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#infoOverlay img {
+  max-width: 90%;
+  margin: 16px 0;
+  border-radius: 10px;
+}
+#infoOverlay p {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+}

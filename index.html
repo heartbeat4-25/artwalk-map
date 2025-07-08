@@ -4,65 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>艺行湖州ArtWalk</title>
-  <style>
-    html, body, #container {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-    }
-    .sidebar {
-      position: absolute;
-      top: 100px;
-      right: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 999;
-    }
-    .btn {
-      background: white;
-      padding: 14px 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.25);
-      cursor: pointer;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      user-select: none;
-    }
-    .search-box {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1001;
-      display: flex;
-      background: white;
-      padding: 6px 10px;
-      border-radius: 12px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    }
-    .search-box input {
-      border: none;
-      outline: none;
-      font-size: 16px;
-      padding: 6px;
-      width: 200px;
-    }
-    .search-box button {
-      border: none;
-      background: #22a05a;
-      color: white;
-      font-weight: bold;
-      padding: 6px 10px;
-      margin-left: 8px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
   <script src="https://webapi.amap.com/maps?v=2.0&key=0b76f92f9acf976b06e26cc05514203e"></script>
-  <script src="locations.js"></script>
+  <script src="locations.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
   <div id="container"></div>
@@ -74,116 +19,11 @@
     <div class="btn" onclick="showDistricts()">区县</div>
     <div class="btn" onclick="showStreets()">街道</div>
   </div>
-
-  <!-- 全屏信息卡片 -->
-  <div id="infoOverlay" style="
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: white;
-    z-index: 1000;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    overflow-y: auto;
-    font-family: sans-serif;
-  ">
-    <button onclick="hideOverlay()" style="
-      position: absolute;
-      top: 20px; right: 20px;
-      font-size: 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-    ">×</button>
+  <div id="infoOverlay">
+    <button onclick="hideOverlay()">×</button>
     <h2 id="overlayTitle"></h2>
-    <img id="overlayImage" src="" style="max-width: 90%; margin: 16px 0; border-radius: 10px;" />
-    <p id="overlayDesc" style="font-size: 16px; line-height: 1.6; text-align: justify;"></p>
+    <img id="overlayImage" />
+    <p id="overlayDesc"></p>
   </div>
-
-  <script>
-    let districtVisible = false, streetVisible = false;
-
-    const map = new AMap.Map("container", {
-      zoom: 9,
-      center: [120.0936, 30.8701]
-    });
-
-    const bounds = new AMap.Bounds([119.26, 30.38], [120.52, 31.16]);
-    const imageLayer = new AMap.ImageLayer({
-      url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",
-      bounds: bounds,
-      opacity: 1
-    });
-    map.add(imageLayer);
-
-    const districtMarkers = [], streetMarkers = [];
-    const redIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png";
-    const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/yellowSin.png";
-
-    districtData.forEach(item => {
-      const marker = new AMap.Marker({
-        position: [item.lng, item.lat],
-        title: item.name,
-        icon: new AMap.Icon({ image: redIcon, size: new AMap.Size(32, 32), imageSize: new AMap.Size(32, 32) }),
-        label: { content: item.name, offset: new AMap.Pixel(0, -30) }
-      });
-      marker.on("click", () => showOverlay(item));
-      marker.setMap(null);
-      districtMarkers.push(marker);
-    });
-
-    streetData.forEach(item => {
-      const marker = new AMap.Marker({
-        position: [item.lng, item.lat],
-        title: item.name,
-        icon: new AMap.Icon({ image: yellowIcon, size: new AMap.Size(32, 32), imageSize: new AMap.Size(32, 32) }),
-        label: { content: item.name, offset: new AMap.Pixel(0, -30) }
-      });
-      marker.on("click", () => showOverlay(item));
-      marker.setMap(null);
-      streetMarkers.push(marker);
-    });
-
-    function showDistricts() {
-      districtVisible = !districtVisible;
-      districtMarkers.forEach(m => m.setMap(districtVisible ? map : null));
-    }
-
-    function showStreets() {
-      streetVisible = !streetVisible;
-      streetMarkers.forEach(m => m.setMap(streetVisible ? map : null));
-    }
-
-    function showOverlay(data) {
-      document.getElementById("overlayTitle").innerText = data.name;
-      document.getElementById("overlayImage").src = data.image;
-      document.getElementById("overlayDesc").innerText = data.desc;
-      document.getElementById("infoOverlay").style.display = "flex";
-      document.getElementById("searchBar").style.display = "none";
-    }
-
-    function hideOverlay() {
-      document.getElementById("infoOverlay").style.display = "none";
-      document.getElementById("searchBar").style.display = "flex";
-    }
-
-    function handleSearch() {
-      const keyword = document.getElementById("searchInput").value.trim();
-      if (!keyword) return;
-
-      const allData = [...districtData, ...streetData];
-      const match = allData.find(item => item.name.includes(keyword));
-
-      if (match) {
-        map.setZoom(12);
-        map.panTo([match.lng, match.lat]);
-        showOverlay(match);
-      } else {
-        alert("未找到相关地点");
-      }
-    }
-  </script>
 </body>
 </html>
