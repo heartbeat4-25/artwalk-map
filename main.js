@@ -7,15 +7,15 @@ const map = new AMap.Map("container", {
 
 const bounds = new AMap.Bounds([119.26, 30.38], [120.52, 31.16]);
 const imageLayer = new AMap.ImageLayer({
-  url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/artwalk-map.png",
+  url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/iamges/maps/artwalk-map.png",
   bounds: bounds,
   opacity: 1
 });
 map.add(imageLayer);
 
 const districtMarkers = [], streetMarkers = [];
-const redIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/redSign.png";
-const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/yellowSin.png";
+const redIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/signals/redSign.png";
+const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/signals/yellowSign.png";
 
 districtData.forEach(item => {
   const marker = new AMap.Marker({
