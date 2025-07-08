@@ -1,3 +1,1 @@
 # artwalk-map
-hellohello
-hahaha
