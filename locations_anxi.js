@@ -10,7 +10,7 @@ const districtData = [
     name: "清隐茶馆",
     lng: 118.189509,
     lat: 25.065298,
-    desc: "隐于凤山绿道，主打围炉煮茶、罐罐烤奶等特色茶饮，假期人气爆棚，是安溪夜间经济代表之一。:contentReference[oaicite:1]{index=1}",
+    desc: "隐于凤山绿道，主打围炉煮茶、罐罐烤奶等特色茶饮，假期人气爆棚，是安溪夜间经济代表之一。",
     image: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qingyin1.png"
   },
   {
