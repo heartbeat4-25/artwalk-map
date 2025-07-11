@@ -100,7 +100,7 @@ async function sendQuestion() {
   document.getElementById("chatResponse").innerText = "🤖 正在思考中，请稍候...";
 
   try {
-    const response = await fetch("https://rag-agent-9s4r.onrender.com/ask", {
+    const response = await fetch("http://127.0.0.1:5000/ask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
