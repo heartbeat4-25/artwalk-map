@@ -73,6 +73,7 @@ function handleSearch() {
   const keyword = document.getElementById("searchInput").value.trim();
   if (!keyword) return;
 
+  const streetData = [];
   const allData = [...districtData, ...streetData];
   const match = allData.find(item => item.name.includes(keyword));
 
