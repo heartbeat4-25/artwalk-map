@@ -27,7 +27,10 @@ districtData.forEach(item => {
     position: [item.lng, item.lat],
     title: item.name,
     icon: new AMap.Icon({ image: redIcon, size: new AMap.Size(32, 32), imageSize: new AMap.Size(32, 32) }),
-    label: { content: item.name, offset: new AMap.Pixel(0, -30) }
+    label: {
+      content: `<div class="marker-label">${item.name}</div>`,
+      offset: new AMap.Pixel(0, -36)
+    }
   });
   marker.on("click", () => showOverlay(item));
   marker.setMap(null);
