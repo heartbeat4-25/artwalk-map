@@ -80,3 +80,42 @@ function handleSearch() {
     alert("未找到相关地点");
   }
 }
+
+function openChat() {
+  document.getElementById("chatModal").style.display = "flex";
+}
+
+function closeChat() {
+  document.getElementById("chatModal").style.display = "none";
+  document.getElementById("chatResponse").innerText = "";
+}
+
+async function sendQuestion() {
+  const question = document.getElementById("chatInput").value.trim();
+  if (!question) {
+    alert("请输入问题");
+    return;
+  }
+
+  document.getElementById("chatResponse").innerText = "🤖 正在思考中，请稍候...";
+
+  try {
+    const response = await fetch("https://rag-agent-9s4r.onrender.com/ask", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ question: question })
+    });
+
+    const data = await response.json();
+    if (data.answer) {
+      document.getElementById("chatResponse").innerText = data.answer;
+    } else if (data.error) {
+      document.getElementById("chatResponse").innerText = "❌ 错误：" + data.error;
+    }
+  } catch (err) {
+    document.getElementById("chatResponse").innerText = "❌ 请求失败：" + err.message;
+  }
+}
+

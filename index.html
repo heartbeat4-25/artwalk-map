@@ -25,5 +25,20 @@
     <img id="overlayImage" />
     <p id="overlayDesc"></p>
   </div>
+
+  <!-- AI 机器人按钮 -->
+  <div class="ai-button" onclick="openChat()">🤖 AI问答</div>
+
+  <!-- AI 机器人弹窗 -->
+  <div id="chatModal" class="chat-modal">
+    <div class="chat-content">
+      <button onclick="closeChat()" class="close-btn">×</button>
+      <h3>智能问答助手</h3>
+      <textarea id="chatInput" placeholder="请输入问题..."></textarea>
+      <button onclick="sendQuestion()">发送</button>
+      <div id="chatResponse"></div>
+    </div>
+  </div>
+
 </body>
 </html>
