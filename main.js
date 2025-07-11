@@ -1,7 +1,7 @@
 let districtVisible = false, streetVisible = false;
 
 const map = new AMap.Map("container", {
-  zoom: 12,
+  zoom: 15,
   //center: [120.0936, 30.8701]
   center: [118.1864, 25.0652],  // 安溪县政府大约位置
   zooms: [10, 15], // 限制缩放范围为10-15之间
