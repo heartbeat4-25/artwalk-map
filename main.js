@@ -1,9 +1,13 @@
 let districtVisible = false, streetVisible = false;
 
 const map = new AMap.Map("container", {
-  zoom: 9,
+  zoom: 12,
   //center: [120.0936, 30.8701]
-  center: [118.1864, 25.0652]  // 安溪县政府大约位置
+  center: [118.1864, 25.0652],  // 安溪县政府大约位置
+  zooms: [10, 15], // 限制缩放范围为10-15之间
+  resizeEnable: true, // 页面大小变化时自动适应
+  dragEnable: true,   // 启用拖拽
+  zoomEnable: true    // 启用缩放
 });
 
 const bounds = new AMap.Bounds([119.26, 30.38], [120.52, 31.16]);
@@ -112,10 +116,10 @@ async function sendQuestion() {
     if (data.answer) {
       document.getElementById("chatResponse").innerText = data.answer;
     } else if (data.error) {
-      document.getElementById("chatResponse").innerText = "❌ 错误：" + data.error;
+      document.getElementById("chatResponse").innerText = "错误：" + data.error;
     }
   } catch (err) {
-    document.getElementById("chatResponse").innerText = "❌ 请求失败：" + err.message;
+    document.getElementById("chatResponse").innerText = "请求失败：" + err.message;
   }
 }
 
