@@ -87,8 +87,8 @@ html, body, #container {
 
 
 .ai-button {
-  position: fixed;
-  bottom: 20px;
+  position: absolute;
+  bottom: 60px;
   right: 20px;
   background: #22a05a;
   color: white;
@@ -96,7 +96,7 @@ html, body, #container {
   border-radius: 50px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   cursor: pointer;
-  z-index: 1002;
+  z-index: 9999;
   font-size: 18px;
 }
 
