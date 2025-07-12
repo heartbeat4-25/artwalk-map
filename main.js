@@ -61,8 +61,19 @@ function showStreets() {
 
 function showOverlay(data) {
   document.getElementById("overlayTitle").innerText = data.name;
-  document.getElementById("overlayImage").src = data.image;
   document.getElementById("overlayDesc").innerText = data.desc;
+
+  const container = document.getElementById("overlayImages");
+  container.innerHTML = "";
+  const imageList = Array.isArray(data.images) ? data.images : [data.image];
+  imageList.forEach(url => {
+    const img = document.createElement("img");
+    img.src = url;
+    img.style.maxWidth = "45%";
+    img.style.borderRadius = "10px";
+    container.appendChild(img);
+  });
+
   document.getElementById("infoOverlay").style.display = "flex";
   document.getElementById("searchBar").style.display = "none";
 }
