@@ -10,7 +10,7 @@ const map = new AMap.Map("container", {
   zoomEnable: true    // 启用缩放
 });
 
-const bounds = new AMap.Bounds([118.10, 24.99], [118.27, 25.13]);
+const bounds = new AMap.Bounds([117.82, 24.29], [118.84, 25.13]);
 const imageLayer = new AMap.ImageLayer({
   url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/maps/anxi-map.png",
   bounds: bounds,
