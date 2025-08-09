@@ -1,16 +1,16 @@
 let districtVisible = false, streetVisible = false;
 
 const map = new AMap.Map("container", {
-  zoom: 12,
+  zoom: 10,
   //center: [120.0936, 30.8701]
-  center: [118.1864, 25.0652],  // 安溪县政府大约位置
+  center: [117.925, 25.625],  // 安溪县政府大约位置
   zooms: [6, 15], // 限制缩放范围为10-15之间
   resizeEnable: true, // 页面大小变化时自动适应
   dragEnable: true,   // 启用拖拽
   zoomEnable: true    // 启用缩放
 });
 
-const bounds = new AMap.Bounds([117.82, 24.29], [118.84, 25.13]);
+const bounds = new AMap.Bounds([117.54, 24.77], [118.31, 25.48]);
 const imageLayer = new AMap.ImageLayer({
   url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/maps/anxi-map.png",
   bounds: bounds,
