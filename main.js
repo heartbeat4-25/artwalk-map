@@ -17,47 +17,78 @@ const imageLayer = new AMap.ImageLayer({
   opacity: 1
 });
 map.add(imageLayer);
+imageLayer.setzIndex(5);
 
-const districtMarkers = [], streetMarkers = [];
+const districtMarkers = [];
 const redIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/signals/redSign.png";
 const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/signals/yellowSign.png";
+
+// 工具：由中心经纬度 + 宽高(米) 计算 bounds
+function boundsFromCenterMeters(lng, lat, widthMeters, heightMeters) {
+  const earthMetersPerDegLat = 111320;                         // 1°纬度 ≈ 111.32km
+  const metersPerDegLng = earthMetersPerDegLat * Math.cos(lat * Math.PI / 180);
+
+  const halfLngDeg = (widthMeters / 2) / metersPerDegLng;
+  const halfLatDeg = (heightMeters / 2) / earthMetersPerDegLat;
+
+  const sw = [lng - halfLngDeg, lat - halfLatDeg]; // 西南角
+  const ne = [lng + halfLngDeg, lat + halfLatDeg]; // 东北角
+  return new AMap.Bounds(sw, ne);
+}
+
+// 创建并显示额外图片图层（默认就显示，保持原图比例）
+function addImageLayerKeepRatio(item) {
+  const img = new Image();
+  img.crossOrigin = "anonymous"; // 防止跨域问题
+  img.onload = () => {
+    const w = img.naturalWidth, h = img.naturalHeight;
+    const widthM = item.widthMeters;                        // 只给宽度（米）
+    const heightM = item.heightMeters || widthM * (h / w);  // 按比例算高度（米）
+
+    const b = boundsFromCenterMeters(item.lng, item.lat, widthM, heightM);
+    const layer = new AMap.ImageLayer({
+      url: item.url,
+      bounds: b,
+      opacity: item.opacity ?? 1
+    });
+    layer.setzIndex(item.zIndex ?? 8);
+    map.add(layer);
+  };
+  img.onerror = () => {
+    console.warn("图片加载失败：", item.url);
+  };
+  img.src = item.url;
+}
+
+(window.extraImageLayersData || []).forEach(addImageLayerKeepRatio);
+
 
 districtData.forEach(item => {
   const marker = new AMap.Marker({
     position: [item.lng, item.lat],
     title: item.name,
-    icon: new AMap.Icon({ image: redIcon, size: new AMap.Size(32, 32), imageSize: new AMap.Size(32, 32) }),
+    zIndex: 300, // 红标在最上层
+    icon: new AMap.Icon({
+      image: redIcon,
+      size: new AMap.Size(32, 32),
+      imageSize: new AMap.Size(32, 32)
+    }),
     label: {
       content: `<div class="marker-label">${item.name}</div>`,
       offset: new AMap.Pixel(0, -36)
     }
   });
   marker.on("click", () => showOverlay(item));
-  marker.setMap(null);
-  districtMarkers.push(marker);
+  marker.setMap(null);           // 默认隐藏
+  districtMarkers.push(marker);  // 存起来给 showDistricts 切换
 });
 
-streetData.forEach(item => {
-  const marker = new AMap.Marker({
-    position: [item.lng, item.lat],
-    title: item.name,
-    icon: new AMap.Icon({ image: yellowIcon, size: new AMap.Size(32, 32), imageSize: new AMap.Size(32, 32) }),
-    label: { content: item.name, offset: new AMap.Pixel(0, -30) }
-  });
-  marker.on("click", () => showOverlay(item));
-  marker.setMap(null);
-  streetMarkers.push(marker);
-});
 
 function showDistricts() {
   districtVisible = !districtVisible;
   districtMarkers.forEach(m => m.setMap(districtVisible ? map : null));
 }
 
-function showStreets() {
-  streetVisible = !streetVisible;
-  streetMarkers.forEach(m => m.setMap(streetVisible ? map : null));
-}
 
 function showOverlay(data) {
   document.getElementById("overlayTitle").innerText = data.name;
