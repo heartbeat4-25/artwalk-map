@@ -40,4 +40,12 @@ window.extraImageLayersData = [
     widthMeters: 10000,   // 覆盖宽度，按需调大/调小
     zIndex: 8
   },
+  {
+    name: "陈素全茶馆",
+    lng: 117.75023199999993,
+    lat: 25.244947999999996,
+    url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/maps/common.png",
+    widthMeters: 10000,   // 覆盖宽度，按需调大/调小
+    zIndex: 8
+  },
 ];
