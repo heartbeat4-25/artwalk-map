@@ -56,4 +56,12 @@ window.extraImageLayersData = [
     widthMeters: 8000,   // 覆盖宽度，按需调大/调小
     zIndex: 8
   },
+  {
+    name: "云岭茶庄园",
+    lng: 117.84023199999993,
+    lat: 25.064947999999996,
+    url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/maps/common.png",
+    widthMeters: 8000,   // 覆盖宽度，按需调大/调小
+    zIndex: 8
+  },
 ];
