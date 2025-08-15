@@ -12,7 +12,7 @@ const map = new AMap.Map("container", {
 
 const bounds = new AMap.Bounds([117.54, 24.77], [118.31, 25.48]);
 const imageLayer = new AMap.ImageLayer({
-  url: "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/maps/anxi-map.png",
+  url: "images/maps/anxi-map.png",
   bounds: bounds,
   opacity: 1
 });
@@ -20,8 +20,8 @@ map.add(imageLayer);
 imageLayer.setzIndex(5);
 
 const districtMarkers = [];
-const redIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/signals/redSign.png";
-const yellowIcon = "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/signals/yellowSign.png";
+const redIcon = "images/signals/redSign.png";
+const yellowIcon = "images/signals/yellowSign.png";
 
 // 工具：由中心经纬度 + 宽高(米) 计算 bounds
 function boundsFromCenterMeters(lng, lat, widthMeters, heightMeters) {
@@ -100,7 +100,7 @@ function showOverlay(data) {
   imageList.forEach(url => {
     const img = document.createElement("img");
     img.src = url;
-    img.style.maxWidth = "45%";
+    img.style.maxWidth = "80%";
     img.style.borderRadius = "10px";
     container.appendChild(img);
   });

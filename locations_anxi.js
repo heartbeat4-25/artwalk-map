@@ -5,9 +5,9 @@ const districtData = [
     lat: 25.027294,
     desc: "位于安溪凤山绿道附近，环境幽静，是当地颇受欢迎的休闲茶馆。",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/wufeng1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/wufeng2.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/wufeng3.png"
+        "images/cards/anxi/wufeng1.png",
+        "images/cards/anxi/wufeng2.png",
+        "images/cards/anxi/wufeng3.png"
     ]
   },
   {
@@ -16,9 +16,9 @@ const districtData = [
     lat: 25.065298,
     desc: "隐于凤山绿道，主打围炉煮茶、罐罐烤奶等特色茶饮，假期人气爆棚，是安溪夜间经济代表之一。",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qingyin1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qingyin2.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qingyin3.png"
+        "images/cards/anxi/qingyin1.png",
+        "images/cards/anxi/qingyin2.png",
+        "images/cards/anxi/qingyin3.png"
     ]
   },
   {
@@ -27,8 +27,8 @@ const districtData = [
     lat: 25.066016,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/jiangxianghe1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/jiangxianghe2.png"
+        "images/cards/anxi/jiangxianghe1.png",
+        "images/cards/anxi/jiangxianghe2.png"
     ]
   },
   {
@@ -37,9 +37,9 @@ const districtData = [
     lat: 25.0252,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/fangsongli1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/fangsongli2.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/fangsongli3.png"
+        "images/cards/anxi/fangsongli1.png",
+        "images/cards/anxi/fangsongli2.png",
+        "images/cards/anxi/fangsongli3.png"
     ]
   },
   {
@@ -48,8 +48,8 @@ const districtData = [
     lat: 25.070434,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/jingxin1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/jingxin2.png"
+        "images/cards/anxi/jingxin1.png",
+        "images/cards/anxi/jingxin2.png"
     ]
   },
   {
@@ -58,7 +58,7 @@ const districtData = [
     lat: 25.04341,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/guanhe1.png"
+        "images/cards/anxi/guanhe1.png"
     ]
   },
   {
@@ -67,10 +67,10 @@ const districtData = [
     lat: 25.022184,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/chaxiang1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/chaxiang2.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/chaxiang3.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/chaxiang4.png"
+        "images/cards/anxi/chaxiang1.png",
+        "images/cards/anxi/chaxiang2.png",
+        "images/cards/anxi/chaxiang3.png",
+        "images/cards/anxi/chaxiang4.png"
     ]
   },
   {
@@ -79,8 +79,8 @@ const districtData = [
     lat: 25.059893,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/yuedu1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/yuedu2.png"
+        "images/cards/anxi/yuedu1.png",
+        "images/cards/anxi/yuedu2.png"
     ]
   },
   {
@@ -89,7 +89,7 @@ const districtData = [
     lat: 25.062268,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qihao1.png"
+        "images/cards/anxi/qihao1.png"
     ]
   },
   {
@@ -98,9 +98,9 @@ const districtData = [
     lat: 25.049323,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qingxi1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qingxi2.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/qingxi3.png"
+        "images/cards/anxi/qingxi1.png",
+        "images/cards/anxi/qingxi2.png",
+        "images/cards/anxi/qingxi3.png"
     ]
   },
   {
@@ -109,8 +109,8 @@ const districtData = [
     lat: 25.041245,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/kongque1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/kongque2.png"
+        "images/cards/anxi/kongque1.png",
+        "images/cards/anxi/kongque2.png"
     ]
   },
   {
@@ -119,9 +119,9 @@ const districtData = [
     lat: 25.027414,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/yufeng1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/yufeng2.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/yufeng3.png"
+        "images/cards/anxi/yufeng1.png",
+        "images/cards/anxi/yufeng2.png",
+        "images/cards/anxi/yufeng3.png"
     ]
   },
   {
@@ -130,7 +130,7 @@ const districtData = [
     lat: 24.986503,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/bama1.png"
+        "images/cards/anxi/bama1.png"
     ]
   },
   {
@@ -139,9 +139,9 @@ const districtData = [
     lat: 25.085068,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/xihe1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/xihe2.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/xihe3.png"
+        "images/cards/anxi/xihe1.png",
+        "images/cards/anxi/xihe2.png",
+        "images/cards/anxi/xihe3.png"
     ]
   },
   {
@@ -150,7 +150,7 @@ const districtData = [
     lat: 25.067027,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/yuecha1.png"
+        "images/cards/anxi/yuecha1.png"
     ]
   },
   {
@@ -159,7 +159,7 @@ const districtData = [
     lat: 25.024707,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/jiujiu1.png"
+        "images/cards/anxi/jiujiu1.png"
     ]
   },
   {
@@ -168,8 +168,8 @@ const districtData = [
     lat: 25.032282,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/langyuan1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/langyuan2.png"
+        "images/cards/anxi/langyuan1.png",
+        "images/cards/anxi/langyuan2.png"
     ]
   },
   {
@@ -178,8 +178,8 @@ const districtData = [
     lat: 25.06227,
     desc: "",
     images: [
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/suyin1.png",
-        "https://raw.githubusercontent.com/heartbeat4-25/artwalk-map/main/images/cards/anxi/suyin2.png"
+        "images/cards/anxi/suyin1.png",
+        "images/cards/anxi/suyin2.png"
     ]
   },
   {
@@ -188,7 +188,7 @@ const districtData = [
     lat: 25.183596000000005,
     desc: "",
     images: [
-
+        "images/cards/anxi/qingxi1.png",
     ]
   },
   {
