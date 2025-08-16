@@ -168,4 +168,3 @@ async function sendQuestion() {
     document.getElementById("chatResponse").innerText = "请求失败：" + err.message;
   }
 }
-
